@@ -43,7 +43,7 @@ struct HomeView: View {
 
 
             Button {
-                isOnboardingViewActive = false
+                isOnboardingViewActive = true
             } label: {
                 Image(systemName: "arrow.circlepath")
                     .imageScale(.large)
