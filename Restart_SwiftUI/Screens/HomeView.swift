@@ -61,7 +61,7 @@ struct HomeView: View {
             .controlSize(.large)
         }
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                 isAnimating = true
             })
         }
