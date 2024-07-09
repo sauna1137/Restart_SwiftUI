@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
 
     @AppStorage("onboarding") var isOnboardingViewActive = false
+    @State private var isAnimating: Bool = false
 
     var body: some View {
         VStack(spacing: 20) {
@@ -25,6 +26,9 @@ struct HomeView: View {
                 Image("character-2")
                     .resizable()
                     .scaledToFit()
+                    .offset(y: isAnimating ? 35 : -35)
+                    .animation(Animation.easeInOut(duration: 4).repeatForever()
+                               , value: isAnimating)
                 .padding()
             }
 
@@ -55,7 +59,11 @@ struct HomeView: View {
             .buttonStyle(.borderedProminent)
             .buttonBorderShape(.capsule)
             .controlSize(.large)
-
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+                isAnimating = true
+            })
         }
     }
 }
